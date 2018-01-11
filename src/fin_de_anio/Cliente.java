@@ -49,7 +49,7 @@ public class Cliente extends Thread {
 			}
 		}
 	}
-
+// No se usa de momento
 //	public void RecogerAbrigo(Ropero ropero) throws Exception {
 //		try {
 //			Thread.sleep(5000);
