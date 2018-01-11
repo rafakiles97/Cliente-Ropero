@@ -1,4 +1,4 @@
-package fin_de_año;
+package fin_de_anio;
 
 public class Cliente extends Thread {
 
