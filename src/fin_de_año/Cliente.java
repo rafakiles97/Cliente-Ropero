@@ -4,10 +4,13 @@ public class Cliente extends Thread {
 
 	private boolean tieneAbrigo;
 	private Ropero ropero = null;
+	private int maxIntentos;
+	private static final int TIEMPO_DEJAR_ABRIGO= 10000;
 
-	public Cliente(Ropero ropero) {
+	public Cliente(Ropero ropero, int maxIntentos) {
 		this.tieneAbrigo = true;
-		this.ropero= ropero;
+		this.ropero = ropero;
+		this.maxIntentos = maxIntentos;
 	}
 
 	public boolean isTieneAbrigo() {
@@ -18,10 +21,19 @@ public class Cliente extends Thread {
 		this.tieneAbrigo = tieneAbrigo;
 	}
 
+	public int getMaxIntentos() {
+		return maxIntentos;
+	}
+
+	public void setMaxIntentos(int maxIntentos) {
+		this.maxIntentos = maxIntentos;
+	}
+
 	public void DejarAbrigo() throws Exception {
 		synchronized (ropero) {
+
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(TIEMPO_DEJAR_ABRIGO);
 				if (isTieneAbrigo() == true) {
 					ropero.LlenarInventario();
 					setTieneAbrigo(false);
@@ -32,34 +44,39 @@ public class Cliente extends Thread {
 
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
+				System.out.println("No has podido dejar el abrigo");
 			}
 		}
 	}
 
-	public void RecogerAbrigo(Ropero ropero) throws Exception {
-		try {
-			Thread.sleep(5000);
-			if (isTieneAbrigo() == false) {
-				ropero.VaciarInventario();
-				setTieneAbrigo(true);
-			} else {
-				throw new Exception(
-						"No has podido recoger el abrigo, Ya tienes uno......");
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
+//	public void RecogerAbrigo(Ropero ropero) throws Exception {
+//		try {
+//			Thread.sleep(5000);
+//			if (isTieneAbrigo() == false) {
+//				ropero.VaciarInventario();
+//				setTieneAbrigo(true);
+//			} else {
+//				throw new Exception(
+//						"No has podido recoger el abrigo, Ya tienes uno......");
+//			}
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			//e.printStackTrace();
+//			System.out.println("No has podido recoger el abrigo, Ya tienes uno......");
+//		}
+//	}
+
 	@Override
 	public void run() {
+
 		try {
-			DejarAbrigo();
+			for (int i = 0; i < getMaxIntentos() && isTieneAbrigo(); i++) {
+				DejarAbrigo();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 }

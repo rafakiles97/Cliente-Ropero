@@ -54,11 +54,11 @@ public class Ropero {
 		}
 	}
 
-	public void VaciarInventario() throws Exception {
-		if (getAforoAbrigos() <= 0) {
-			throw new Exception("No hay abrigos en el ropero");
-		}else{
-			setAforoAbrigos(getAforoAbrigos()-1);
-		}
-	}
+//	public void VaciarInventario() throws Exception {
+//		if (getAforoAbrigos() <= 0) {
+//			throw new Exception("No hay abrigos en el ropero");
+//		}else{
+//			setAforoAbrigos(getAforoAbrigos()-1);
+//		}
+//	}
 }
