@@ -1,5 +1,13 @@
 package fin_de_año;
 
+/**
+ * 
+ * @author n.entremonzaga.monje
+ *
+ *         Entrar en un local 10 personas, pero solo 5 personas pueden dejar los abrigos en el ropero. cuando lo hayan dejado las 5 personas
+ *         los restantes que quieran dejarlo no podran, tienen dos intentos para probar si pueden.
+ *
+ */
 public class Main {
 
 	static Ropero ropero1 = new Ropero(5);
