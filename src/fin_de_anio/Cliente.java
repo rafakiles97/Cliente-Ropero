@@ -38,31 +38,39 @@ public class Cliente extends Thread {
 		synchronized (ropero) {
 			try {
 				Thread.sleep(TIEMPO_DEJAR_ABRIGO);
-				if (isTieneAbrigo() ==true) {
+				if (isTieneAbrigo() == true) {
 					ropero.LlenarInventario(nombre);
 					setTieneAbrigo(false);
 					System.out.println("Soy el cliente " + nombre
 							+ " he dejado el abrigo, es mi intento numero "
 							+ numIntentos);
-					
+
+				} else if (numIntentos == 2) {
+
+					System.out
+							.println("No hay sitio para dejar mas abrigos, se te acabaron los intentos cliente "
+									+ nombre);
+
 				} else {
-					throw new Exception("Soy el cliente " + nombre
-							+ "No he podido dejar el abrigo, es mi intento numero "
-							+ numIntentos);
-//					System.out.println("Soy el cliente " + nombre
-//							+ ". No he podido dejar el abrigo, es mi intento numero "
-//							+ numIntentos);
-				}
-				if(numIntentos==2){
-					System.out.println("No hay sitio para dejar mas abrigos, se te acabaron los intentos cliente "+nombre );
+					throw new Exception(
+							"Soy el cliente "
+									+ nombre
+									+ "No he podido dejar el abrigo, es mi intento numero "
+									+ numIntentos);
+					// System.out.println("Soy el cliente " + nombre
+					// + ". No he podido dejar el abrigo, es mi intento numero "
+					// + numIntentos);
+
 				}
 
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				// e.printStackTrace();
-				System.out.println("Soy el cliente " + nombre
-						+ ". No he podido dejar el abrigo, es mi intento numero ............. "
-						+ numIntentos);
+				System.out
+						.println("Soy el cliente "
+								+ nombre
+								+ ". No he podido dejar el abrigo, es mi intento numero ............. "
+								+ numIntentos);
 			}
 		}
 	}
@@ -91,7 +99,7 @@ public class Cliente extends Thread {
 		try {
 			for (int i = 0; i < getMaxIntentos() && isTieneAbrigo(); i++) {
 				DejarAbrigo();
-				//ropero.LlenarInventario(nombre);
+				// ropero.LlenarInventario(nombre);
 				numIntentos++;
 			}
 		} catch (Exception e) {
