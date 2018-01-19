@@ -31,24 +31,13 @@ public class Ropero {
 	}
 
 	public void LlenarInventario(String nombre) throws Exception {
-//		try {
-			if (getAforoAbrigos() >= getAforoMaxAbrigos()) {
-				throw new Exception("No hay sitio para mas abrigos");
-			} else {
-				setAforoAbrigos(getAforoAbrigos() + 1);
-			}
-//		} catch (Exception e) {
-//			System.out.println("Lo siento cliente " + nombre
-//					+ ", no hay sitio para mas abrigos");
-//		}
+		if (getAforoAbrigos() >= getAforoMaxAbrigos()) {
+			throw new Exception("No hay sitio para mas abrigos");
+		} else {
+			setAforoAbrigos(getAforoAbrigos() + 1);
+		}
+		if (getAforoAbrigos() >= 5) {
+			System.out.println("No hay mas sitios para mas abrigos");
+		}
 	}
-
-	// No se usa de momento
-	// public void VaciarInventario() throws Exception {
-	// if (getAforoAbrigos() <= 0) {
-	// throw new Exception("No hay abrigos en el ropero");
-	// }else{
-	// setAforoAbrigos(getAforoAbrigos()-1);
-	// }
-	// }
 }

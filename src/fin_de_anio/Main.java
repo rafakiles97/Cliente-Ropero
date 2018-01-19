@@ -10,6 +10,7 @@ package fin_de_anio;
  *         probar si pueden.
  *
  */
+
 public class Main {
 
 	static Ropero ropero1 = new Ropero(5);
