@@ -34,7 +34,7 @@ public class Ropero {
 
 	public void LlenarInventario(String nombre) throws Exception {
 		if (getAforoAbrigos() >= 5 && haySitio) {
-			Thread.sleep(10000);
+			Thread.sleep(12000);
 			System.out.println("No hay mas sitios para mas abrigos");
 			haySitio = false;
 		}

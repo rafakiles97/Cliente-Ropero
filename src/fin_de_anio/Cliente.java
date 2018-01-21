@@ -11,7 +11,7 @@ public class Cliente extends Thread {
 	private boolean tieneAbrigo;
 	private Ropero ropero = null;
 	private int maxIntentos;
-	private static final int TIEMPO_DEJAR_ABRIGO = 8000;
+	private static final int TIEMPO_DEJAR_ABRIGO = 10000;
 	public String nombre;
 	private int numIntentos;
 
@@ -58,10 +58,7 @@ public class Cliente extends Thread {
 									+ "No he podido dejar el abrigo, es mi intento numero "
 									+ numIntentos);
 				}
-
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				// e.printStackTrace();
 				System.out
 						.println("Soy "
 								+ nombre
@@ -83,6 +80,8 @@ public class Cliente extends Thread {
 				System.out
 						.println("No hay sitio para dejar mas abrigos, se te acabaron los intentos "
 								+ nombre);
+//				System.out
+//				.println("No hay sitio para dejar mas abrigos, se acabaron los intentos ");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
